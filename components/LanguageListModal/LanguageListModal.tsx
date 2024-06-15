@@ -33,15 +33,6 @@ const LanguageListModal = ({ isVisible, setIsVisible }) => {
             alignItems: 'center',
             justifyContent: 'center',
           }}
-          // ListHeaderComponent={
-          //   <View
-          //     className={` border-gray-300 min-w-full mb-5 px-6 ${textDirection}`}
-          //   >
-          //     <Text className={` text-lg text-primary font-psemibold`}>
-          //       {t('chooseLanguage')}
-          //     </Text>
-          //   </View>
-          // }
           keyExtractor={(item) => item.code}
           data={languageList}
           renderItem={({ item }) => (
@@ -54,6 +45,7 @@ const LanguageListModal = ({ isVisible, setIsVisible }) => {
               } py-2 min-w-[100%]`}
               onPress={() => {
                 changeLanguage(item.code);
+
                 setIsVisible(false);
               }}
             >

@@ -1,9 +1,4 @@
-import {
-  account,
-  avatars,
-  config,
-  databases,
-} from '@/lib/appwrite';
+import { account, avatars, config, databases } from '@/lib/appwrite';
 import { ID, Query } from 'react-native-appwrite';
 import { signIn } from './login';
 
@@ -19,10 +14,7 @@ export const createUser = async (
         return response;
       },
       function (err) {
-        console.log(
-          err,
-          'Error happened while creating user'
-        );
+        console.log(err, 'Error happened while creating user');
         throw new Error(err);
       }
     );
@@ -53,8 +45,7 @@ export const getCurrentUser = async () => {
       config.usersCollectionId,
       [Query.equal('accountId', currentAccount.$id)]
     );
-    if (!currentUser)
-      throw new Error('Current User Not Exist');
+    if (!currentUser) throw new Error('Current User Not Exist');
     return currentUser.documents[0];
   } catch (err) {
     console.log(err);
@@ -65,7 +56,7 @@ export const logoutUser = async () => {
   try {
     const session = await account.deleteSession('current');
     return session;
-  } catch (err) {
+  } catch (err: any) {
     throw new Error(err);
   }
 };

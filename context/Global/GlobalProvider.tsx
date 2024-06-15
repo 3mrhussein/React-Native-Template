@@ -7,8 +7,10 @@ import {
   PropsWithChildren,
 } from 'react';
 import { GlobalContextType } from './Global.types';
-import useLanguage, { LanguageCode, LanguageType } from '@/hooks/useLanguage';
+import useLanguage, { LanguageCode } from '@/hooks/useLanguage';
 import { changeLanguage } from 'i18next';
+import { applyRTLSetting, disableRTL, enableRTL } from '@/helpers/utils';
+import { I18nManager } from 'react-native';
 
 const initialContextValue = {
   isLoggedIn: false,
@@ -16,7 +18,7 @@ const initialContextValue = {
   isLoading: false,
   isDataUpToDate: false,
   language: 'en' as LanguageCode,
-  changeLanguage,
+  changeLanguage: (lng: LanguageCode) => {},
 };
 
 const GlobalContext = createContext<GlobalContextType>(initialContextValue);
@@ -29,22 +31,12 @@ const GlobalProvider: React.FC<PropsWithChildren> = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isDataUpToDate, setIsDataUpToDate] = useState(true);
-  const { textDirection, language, languageList } = useLanguage();
+  const { textDirection, language, languageList, changeLanguage } =
+    useLanguage();
   useEffect(() => {
-    getCurrentUser()
-      .then((res) => {
-        if (res) {
-          setIsLoggedIn(true);
-          setUser(res as any);
-        } else {
-          setIsLoggedIn(false);
-          setUser(null);
-        }
-      })
-      .catch((err) => {
-        throw new Error(err);
-      })
-      .finally(() => setIsLoading(false));
+    applyRTLSetting().then((result) => {
+      if (language !== result) changeLanguage(result);
+    });
   }, []);
   return (
     <GlobalContext.Provider

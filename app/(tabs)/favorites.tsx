@@ -27,7 +27,7 @@ interface FormType {
   prompt: string;
 }
 
-const Create = () => {
+const Favorites = () => {
   const [uploading, setUploading] = useState(false);
   const { user } = useUser();
   const [form, setForm] = useState<FormType>({
@@ -168,4 +168,4 @@ const Create = () => {
   );
 };
 
-export default Create;
+export default Favorites;

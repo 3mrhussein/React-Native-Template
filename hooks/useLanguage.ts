@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import i18n from '@/i18n/config';
-import { switchLanguage } from '@/helpers/utils';
+import { disableRTL, enableRTL, switchLanguage } from '@/helpers/utils';
+import { I18nManager } from 'react-native';
 
 export type LanguageCode = 'en' | 'ar';
 
@@ -17,23 +18,23 @@ const useLanguage = () => {
   const [language, setLanguage] = useState<LanguageCode>(
     i18n.language as LanguageCode
   );
-  const toggleLanguage = () => {
-    if (i18n.language === 'en') {
-      switchLanguage('ar');
-      setLanguage('ar');
-    } else {
-      switchLanguage('en');
-      setLanguage('en');
+
+  const changeLanguage = async (Lng: LanguageCode) => {
+    if (i18n.language !== Lng) {
+      if (Lng === 'ar') await enableRTL();
+      else await disableRTL();
+      switchLanguage(Lng);
+      setLanguage(Lng);
     }
   };
+
   const textDirection =
     language === 'en' ? 'items-start text-left' : 'items-end text-right';
-  console.log('Language Hook');
   return {
     textDirection,
     languageList,
     language,
-    toggleLanguage,
+    changeLanguage,
   };
 };
 

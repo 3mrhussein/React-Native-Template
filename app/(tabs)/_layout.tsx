@@ -6,6 +6,8 @@ import useCheckSession from '@/hooks/useCheckSession';
 import theme from '@/theme';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import TabLabel from '@/components/TabLabel/TabLabel';
+import AntDesign from '@expo/vector-icons/AntDesign';
+import Entypo from '@expo/vector-icons/Entypo';
 
 const TabsLayout = () => {
   return (
@@ -13,7 +15,7 @@ const TabsLayout = () => {
       mode='padding'
       style={{
         flex: 1,
-        backgroundColor: theme.colors.light,
+        backgroundColor: theme.colors.light.DEFAULT,
       }}
     >
       <Tabs
@@ -21,9 +23,15 @@ const TabsLayout = () => {
           tabBarActiveTintColor: theme.colors.primary.DEFAULT,
           tabBarInactiveTintColor: '#ADADB0',
           tabBarStyle: {
-            backgroundColor: theme.colors.light,
+            backgroundColor: theme.colors.light.DEFAULT,
             borderTopWidth: 1,
-            borderTopColor: '#232533',
+            borderTopColor: theme.colors.light[200],
+            shadowColor: theme.colors.light[200],
+            shadowRadius: 3,
+            shadowOffset: {
+              width: -5,
+              height: -5,
+            },
             height: 60,
             paddingBottom: 0,
           },
@@ -36,11 +44,10 @@ const TabsLayout = () => {
             title: 'Home',
             headerShown: false,
             tabBarIcon: ({ color, focused, size }) => (
-              <TabIcon
-                icon={icons.home}
+              <AntDesign
+                name='home'
+                size={focused ? size + 5 : size}
                 color={color}
-                focused={focused}
-                size={size}
               />
             ),
             tabBarLabel: ({ color, focused }) => (
@@ -49,38 +56,53 @@ const TabsLayout = () => {
           }}
         />
         <Tabs.Screen
-          name='bookmark'
+          name='shop'
           options={{
-            title: 'Bookmark',
+            title: 'Shop',
             headerShown: false,
             tabBarIcon: ({ color, focused, size }) => (
-              <TabIcon
-                size={size}
-                icon={icons.bookmark}
+              <Entypo
+                name='shop'
+                size={focused ? size + 5 : size}
                 color={color}
-                focused={focused}
               />
             ),
             tabBarLabel: ({ color, focused }) => (
-              <TabLabel color={color} focused={focused} name={'Bookmark'} />
+              <TabLabel color={color} focused={focused} name={'Shop'} />
             ),
           }}
         />
         <Tabs.Screen
-          name='create'
+          name='cart'
           options={{
-            title: 'Create',
+            title: 'Cart',
             headerShown: false,
             tabBarIcon: ({ color, focused, size }) => (
-              <TabIcon
-                size={size}
-                icon={icons.plus}
+              <AntDesign
+                name='shoppingcart'
+                size={focused ? size + 5 : size}
                 color={color}
-                focused={focused}
               />
             ),
             tabBarLabel: ({ color, focused }) => (
-              <TabLabel color={color} focused={focused} name={'Create'} />
+              <TabLabel color={color} focused={focused} name={'Cart'} />
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name='favorites'
+          options={{
+            title: 'Favorites',
+            headerShown: false,
+            tabBarIcon: ({ color, size, focused }) => (
+              <AntDesign
+                name='heart'
+                size={focused ? size + 5 : size}
+                color={color}
+              />
+            ),
+            tabBarLabel: ({ color, focused }) => (
+              <TabLabel color={color} focused={focused} name={'Favorites'} />
             ),
           }}
         />
@@ -90,11 +112,10 @@ const TabsLayout = () => {
             title: 'Profile',
             headerShown: false,
             tabBarIcon: ({ color, focused, size }) => (
-              <TabIcon
-                size={size}
-                icon={icons.profile}
+              <AntDesign
+                name='user'
+                size={focused ? size + 5 : size}
                 color={color}
-                focused={focused}
               />
             ),
             tabBarLabel: ({ color, focused }) => (

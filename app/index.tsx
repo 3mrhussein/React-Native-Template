@@ -1,6 +1,6 @@
 import { Link, Redirect, router } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import { Image, Text, TouchableOpacity, View } from 'react-native';
+import { I18nManager, Image, Text, TouchableOpacity, View } from 'react-native';
 import images from '../constants/images';
 import CustomButton from '@/components/CustomButton/CustomButton';
 import { useGlobalContext } from '@/context/Global/GlobalProvider';
@@ -19,7 +19,6 @@ export default function Index() {
     // if (router) router.replace('/home');
     requestPermissions();
   }, []);
-
   //using safe area view to avoid notching collision
   return isLoggedIn && !isLoading ? (
     <Redirect href={'/home'} />
