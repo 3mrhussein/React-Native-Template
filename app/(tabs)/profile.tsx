@@ -5,8 +5,8 @@ import { getUserPosts, searchPosts } from '@/api/posts';
 import useFetchData from '@/hooks/useFetchData';
 import icons from '@/constants/icons';
 import EmptyState from '@/components/EmptyState';
-import VideoCard from '@/components/VideoCard/VideoCard';
-import InfoBox from '@/components/InfoBox/InfoBox';
+import VideoCard from '@/components/organisms/VideoCard/VideoCard';
+import InfoBox from '@/components/molecules/InfoBox/InfoBox';
 import { logoutUser } from '@/api/user';
 import { router } from 'expo-router';
 import { useGlobalContext } from '@/context/Global/GlobalProvider';
@@ -17,9 +17,9 @@ const Profile = () => {
   const handleLogout = async () => {
     const session = await logoutUser();
     if (session) {
-      setUser(null);
-      setIsLoggedIn(false);
-      router.replace('/sign-in');
+      // setUser(null);
+      // setIsLoggedIn(false);
+      // router.replace('/sign-in');
     }
   };
   return (

@@ -2,7 +2,6 @@ import { SplashScreen, Stack } from 'expo-router';
 import { useFonts } from 'expo-font';
 import { useEffect } from 'react';
 import GlobalProvider from '@/context/Global/GlobalProvider';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
 SplashScreen.preventAutoHideAsync();
 export default function RootLayout() {
@@ -26,7 +25,6 @@ export default function RootLayout() {
   }, [fontsLoaded, error]);
 
   if (!fontsLoaded && !error) return null;
-
   return (
     <GlobalProvider>
       <Stack>

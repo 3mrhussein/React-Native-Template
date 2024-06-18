@@ -1,6 +1,6 @@
 module.exports = {
   colors: {
-    light: { DEFAULT: '#f1f1ff', 100: '#e1e1e1', 200: '#a2a2a1' },
+    light: { DEFAULT: '#f1f1ff', 100: '#e1e1e1', 200: '##B2B2B2' },
     primary: { DEFAULT: '#00BBD6' },
     secondary: {
       DEFAULT: '#CA2C36',

@@ -14,12 +14,10 @@
     },
     "supportsRTL": true,
     "ios": {
-      "supportsRTL": true,
       "supportsTablet": true,
       "package": "com.amr.aora"
     },
     "android": {
-      "supportsRTL": true,
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
@@ -55,7 +53,10 @@
       "typedRoutes": true
     },
     "extra": {
-      "supportsRTL": true
+      "rtlEnabled": true
+    },
+    "updates": {
+      "enabled": true
     }
   }
 }

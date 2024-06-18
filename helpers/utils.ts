@@ -3,38 +3,28 @@ import * as ImagePicker from 'expo-image-picker';
 import { I18nManager, Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 // Function to enable RTL mode
-export const enableRTL = async () => {
+export const enableRTL = async (setIsRTL) => {
   // Enable RTL and force the layout direction change
   I18nManager.allowRTL(true);
   I18nManager.forceRTL(true);
-
   // Optionally save the RTL state to AsyncStorage
   await AsyncStorage.setItem('lang', 'ar');
+  setIsRTL(true);
 
   // Notify the user to restart the app
 };
 
 // Function to disable RTL mode
-export const disableRTL = async () => {
+export const disableRTL = async (setIsRTL) => {
   I18nManager.allowRTL(false);
   I18nManager.forceRTL(false);
-
   // Optionally save the RTL state to AsyncStorage
   await AsyncStorage.setItem('lang', 'en');
+  setIsRTL(false);
 };
 
-// Function to check and apply RTL on app start
-export const applyRTLSetting = async () => {
-  const lang = await AsyncStorage.getItem('lang');
-  if (lang === 'ar') {
-    I18nManager.allowRTL(true);
-    I18nManager.forceRTL(true);
-    return 'ar';
-  } else {
-    I18nManager.allowRTL(false);
-    I18nManager.forceRTL(false);
-    return 'en';
-  }
+export const getSavedLanguage = async () => {
+  return await AsyncStorage.getItem('lang');
 };
 
 export const switchLanguage = (lang) => {

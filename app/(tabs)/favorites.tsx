@@ -8,10 +8,10 @@ import {
   Alert,
 } from 'react-native';
 import React, { useEffect, useState } from 'react';
-import FormField from '@/components/FormField/FormField';
+import FormField from '@/components/atoms/FormField/FormField';
 import { ResizeMode, Video } from 'expo-av';
 import icons from '@/constants/icons';
-import CustomButton from '@/components/CustomButton/CustomButton';
+import CustomButton from '@/components/molecules/CustomButton/CustomButton';
 import { router } from 'expo-router';
 import useUser from '@/hooks/useUser';
 import { createVideo } from '@/api/posts';

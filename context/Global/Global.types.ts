@@ -13,4 +13,5 @@ export type GlobalContextType = {
   changeLanguage: (lng: LanguageCode) => void;
   languageList?: LanguageType[];
   textDirection?: string;
+  isRTL?: boolean;
 };

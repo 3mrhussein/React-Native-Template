@@ -2,8 +2,8 @@ import { View, Text, ScrollView, Image, Alert } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import images from '@/constants/images';
-import FormField from '@/components/FormField/FormField';
-import CustomButton from '@/components/CustomButton/CustomButton';
+import FormField from '@/components/atoms/FormField/FormField';
+import CustomButton from '@/components/molecules/CustomButton/CustomButton';
 import { Link, router } from 'expo-router';
 import { signIn } from '@/api/login';
 import useUser from '@/hooks/useUser';
@@ -18,21 +18,21 @@ const SignIn = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { email, password } = form;
   const submit = async () => {
-    if (!email || !password)
-      Alert.alert('Please enter your email and password');
-    else {
-      try {
-        setIsSubmitting(true);
-        await signIn(email, password);
-        setUser(await getCurrentUser());
-        setIsLoggedIn(true);
-        router.replace('/home');
-      } catch (err) {
-        console.log(err);
-      } finally {
-        setIsSubmitting(false);
-      }
-    }
+    // if (!email || !password)
+    //   Alert.alert('Please enter your email and password');
+    // else {
+    //   try {
+    //     setIsSubmitting(true);
+    //     await signIn(email, password);
+    //     setUser(await getCurrentUser());
+    //     setIsLoggedIn(true);
+    //     router.replace('/home');
+    //   } catch (err) {
+    //     console.log(err);
+    //   } finally {
+    //     setIsSubmitting(false);
+    //   }
+    // }
   };
 
   useEffect(() => {
@@ -60,7 +60,7 @@ const SignIn = () => {
             }}
             otherStyles='mt-7'
             keyboardType='email-address'
-            placehodler={'Email'}
+            placeholder={'Email'}
           />
 
           <FormField
@@ -70,7 +70,7 @@ const SignIn = () => {
               setForm({ ...form, password: e });
             }}
             otherStyles='mt-7'
-            placehodler={'Passowrd'}
+            placeholder={'Passowrd'}
           />
 
           <CustomButton

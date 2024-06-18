@@ -1,11 +1,11 @@
 import React from 'react';
 import { Tabs } from 'expo-router';
 import icons from '../../constants/icons';
-import TabIcon from '@/components/TabIcon';
+import TabIcon from '@/components/atoms/TabIcon';
 import useCheckSession from '@/hooks/useCheckSession';
 import theme from '@/theme';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import TabLabel from '@/components/TabLabel/TabLabel';
+import TabLabel from '@/components/atoms/TabLabel/TabLabel';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import Entypo from '@expo/vector-icons/Entypo';
 

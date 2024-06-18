@@ -2,8 +2,8 @@ import { View, Text, ScrollView, Image, Alert } from 'react-native';
 import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import images from '@/constants/images';
-import FormField from '@/components/FormField/FormField';
-import CustomButton from '@/components/CustomButton/CustomButton';
+import FormField from '@/components/atoms/FormField/FormField';
+import CustomButton from '@/components/molecules/CustomButton/CustomButton';
 import { Link, router } from 'expo-router';
 import { createUser } from '@/api/user';
 const SignUp = () => {

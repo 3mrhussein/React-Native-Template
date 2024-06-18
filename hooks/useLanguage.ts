@@ -18,11 +18,12 @@ const useLanguage = () => {
   const [language, setLanguage] = useState<LanguageCode>(
     i18n.language as LanguageCode
   );
+  const [isRTL, setIsRTL] = useState(false);
 
   const changeLanguage = async (Lng: LanguageCode) => {
     if (i18n.language !== Lng) {
-      if (Lng === 'ar') await enableRTL();
-      else await disableRTL();
+      if (Lng === 'ar') await enableRTL(setIsRTL);
+      else await disableRTL(setIsRTL);
       switchLanguage(Lng);
       setLanguage(Lng);
     }
@@ -35,6 +36,8 @@ const useLanguage = () => {
     languageList,
     language,
     changeLanguage,
+    isRTL,
+    setIsRTL,
   };
 };
 

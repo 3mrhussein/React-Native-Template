@@ -2,7 +2,7 @@ import { Link, Redirect, router } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { I18nManager, Image, Text, TouchableOpacity, View } from 'react-native';
 import images from '../constants/images';
-import CustomButton from '@/components/CustomButton/CustomButton';
+import CustomButton from '@/components/molecules/CustomButton/CustomButton';
 import { useGlobalContext } from '@/context/Global/GlobalProvider';
 import { useEffect, useState } from 'react';
 import { requestPermissions } from '@/helpers/permissions';
@@ -10,7 +10,7 @@ import { useTranslation } from 'react-i18next';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import SimpleLineIcons from '@expo/vector-icons/SimpleLineIcons';
 import theme from '../theme';
-import LanguageListModal from '@/components/LanguageListModal/LanguageListModal';
+import LanguageListModal from '@/components/organisms/LanguageListModal/LanguageListModal';
 export default function Index() {
   const { t } = useTranslation();
   const { isLoggedIn, isLoading } = useGlobalContext();

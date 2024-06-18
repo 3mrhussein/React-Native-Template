@@ -9,10 +9,10 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { searchPosts } from '@/api/posts';
 import useFetchData from '@/hooks/useFetchData';
-import FormField from '@/components/FormField/FormField';
+import FormField from '@/components/atoms/FormField/FormField';
 import icons from '@/constants/icons';
 import EmptyState from '@/components/EmptyState';
-import VideoCard from '@/components/VideoCard/VideoCard';
+import VideoCard from '@/components/organisms/VideoCard/VideoCard';
 
 const Search = () => {
   const { query } = useLocalSearchParams();

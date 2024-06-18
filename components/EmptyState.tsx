@@ -1,7 +1,7 @@
 import { View, Text, Image } from 'react-native';
 import React from 'react';
 import images from '@/constants/images';
-import CustomButton from './CustomButton/CustomButton';
+import CustomButton from './molecules/CustomButton/CustomButton';
 import { router } from 'expo-router';
 
 const EmptyState = ({ title, subtitle }) => {

@@ -8,9 +8,7 @@ import {
 } from 'react';
 import { GlobalContextType } from './Global.types';
 import useLanguage, { LanguageCode } from '@/hooks/useLanguage';
-import { changeLanguage } from 'i18next';
-import { applyRTLSetting, disableRTL, enableRTL } from '@/helpers/utils';
-import { I18nManager } from 'react-native';
+import { getSavedLanguage } from '@/helpers/utils';
 
 const initialContextValue = {
   isLoggedIn: false,
@@ -31,13 +29,25 @@ const GlobalProvider: React.FC<PropsWithChildren> = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isDataUpToDate, setIsDataUpToDate] = useState(true);
-  const { textDirection, language, languageList, changeLanguage } =
-    useLanguage();
+  const {
+    isRTL,
+    setIsRTL,
+    textDirection,
+    language,
+    languageList,
+    changeLanguage,
+  } = useLanguage();
+
   useEffect(() => {
-    applyRTLSetting().then((result) => {
-      if (language !== result) changeLanguage(result);
-    });
-  }, []);
+    getSavedLanguage()
+      .then((lang) => {
+        changeLanguage(lang as LanguageCode);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [isRTL]);
+
   return (
     <GlobalContext.Provider
       value={{
@@ -53,6 +63,7 @@ const GlobalProvider: React.FC<PropsWithChildren> = ({ children }) => {
         changeLanguage,
         languageList,
         textDirection,
+        isRTL,
       }}
     >
       {children}
