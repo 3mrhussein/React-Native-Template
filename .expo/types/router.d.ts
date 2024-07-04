@@ -3,9 +3,9 @@ import type { ReactNode } from 'react';
 import type { TextProps, GestureResponderEvent } from 'react-native';
 
 export namespace ExpoRouter {
-  type StaticRoutes = `/` | `/(auth)` | `/(tabs)` | `/_sitemap` | `/cart` | `/containers/CommonLayout/CommonLayout` | `/favorites` | `/home` | `/profile` | `/shop` | `/sign-in` | `/sign-up`;
-  type DynamicRoutes<T extends string> = `/search/${SingleRoutePart<T>}`;
-  type DynamicRouteTemplate = `/search/[query]`;
+  type StaticRoutes = `/` | `/(auth)` | `/(tabs)` | `/_sitemap` | `/cart` | `/categories/hello` | `/containers/CategoryPreview/CategoryPreview` | `/containers/CommonLayout/CommonLayout` | `/favorites` | `/home` | `/products` | `/profile` | `/shop` | `/sign-in` | `/sign-up`;
+  type DynamicRoutes<T extends string> = `/categories/${SingleRoutePart<T>}` | `/products/${SingleRoutePart<T>}` | `/search/${SingleRoutePart<T>}`;
+  type DynamicRouteTemplate = `/categories/[categoryId]` | `/products/[productId]` | `/search/[query]`;
 
   export type RelativePathString = `./${string}` | `../${string}` | '..';
   export type AbsoluteRoute = DynamicRouteTemplate | StaticRoutes;

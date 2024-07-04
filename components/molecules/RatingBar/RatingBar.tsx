@@ -24,9 +24,10 @@ const RatingBar = ({
 }) => {
   const starArray = getStarArray(AverageRating);
   return (
-    <View className='w-auto flex-row justify-center items-center '>
+    <View className=' flex-row items-center'>
       {starArray.map((type, index) => (
         <Star
+          size={15}
           key={index}
           type={type}
           style={{

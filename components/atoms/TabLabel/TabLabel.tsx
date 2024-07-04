@@ -4,7 +4,7 @@ import React from 'react';
 const TabLabel = ({ focused, color, name }) => {
   return (
     <Text
-      className={`${focused ? 'font-psemibold' : 'font-pregular'} text-xs `}
+      className={`${focused ? 'font-pmedium' : 'font-pregular'} text-xs `}
       style={{ color: color }}
     >
       {name}

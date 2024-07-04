@@ -1,27 +1,58 @@
-import { Text, ScrollView, ImageBackground, View } from 'react-native';
+import {
+  Text,
+  ScrollView,
+  ImageBackground,
+  View,
+  FlatList,
+} from 'react-native';
 import React from 'react';
 import { useGlobalContext } from '@/context/Global/GlobalProvider';
 import { HomeTopImage } from '@/static';
 import { useTranslation } from 'react-i18next';
 import HeroBanner from '@/components/molecules/HeroBanner/HeroBanner';
-import Badge from '@/components/atoms/Badge/Badge';
-import Star from '@/components/atoms/Star/Star';
-import RatingBar from '@/components/molecules/RatingBar/RatingBar';
-
+import ProductCard from '@/components/organisms/ProductCard/ProductCard';
+import CategoryPreview from '../containers/CategoryPreview/CategoryPreview';
+const fakeCardsArray = ['', '', '', '', ''];
 const Home = () => {
   const { t } = useTranslation();
   const { isRTL } = useGlobalContext();
+
   return (
-    <ScrollView>
+    <ScrollView
+      showsVerticalScrollIndicator={false}
+      className='flex-col bg-white'
+    >
       <HeroBanner
         title={t('HomeHeroTitle')}
         backgroundImage={HomeTopImage}
         height={250}
         isRTL={isRTL}
       />
-      <Badge />
-      <Star />
-      <RatingBar />
+      <View className='mb-2'>
+        <CategoryPreview to='/cart'>
+          <FlatList
+            horizontal
+            data={fakeCardsArray}
+            renderItem={() => <ProductCard />}
+            showsHorizontalScrollIndicator={false}
+          />
+        </CategoryPreview>
+        <CategoryPreview title='New'>
+          <FlatList
+            horizontal
+            data={fakeCardsArray}
+            renderItem={() => <ProductCard />}
+            showsHorizontalScrollIndicator={false}
+          />
+        </CategoryPreview>
+        <CategoryPreview>
+          <FlatList
+            horizontal
+            data={fakeCardsArray}
+            renderItem={() => <ProductCard />}
+          />
+        </CategoryPreview>
+      </View>
     </ScrollView>
   );
 };

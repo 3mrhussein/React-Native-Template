@@ -15,6 +15,8 @@ export default function RootLayout() {
     'Poppins-Regular': require('../assets/fonts/Poppins-Regular.ttf'),
     'Poppins-SemiBold': require('../assets/fonts/Poppins-SemiBold.ttf'),
     'Poppins-Thin': require('../assets/fonts/Poppins-Thin.ttf'),
+    AntDesign: require('../assets/fonts/AntDesign.ttf'),
+    FontAwesome: require('../assets/fonts/FontAwesome.ttf'),
   });
 
   useEffect(() => {
@@ -30,9 +32,12 @@ export default function RootLayout() {
       <Stack>
         <Stack.Screen name='index' options={{ headerShown: false }} />
         <Stack.Screen name='(auth)' options={{ headerShown: false }} />
-        <Stack.Screen name='(tabs)' options={{ headerShown: false }} />
-        <Stack.Screen name='search/[query]' options={{ headerShown: false }} />
-        {/* <Stack.Screen name='profile' options={{ headerShown: false }} /> */}
+        <Stack.Screen
+          name='(tabs)'
+          options={{
+            headerShown: false,
+          }}
+        />
       </Stack>
     </GlobalProvider>
   );

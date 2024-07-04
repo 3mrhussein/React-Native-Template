@@ -10,8 +10,8 @@ const HeroBanner = ({ backgroundImage, isRTL, title, height }) => {
       className={`w-full h-full `}
       style={{ height }}
     >
-      <DarkOpacityView opacity={0.5} />
-      <View className={`flex-1 p-5 ${isRTL && 'items-end'} justify-end`}>
+      <DarkOpacityView opacity={0.2} />
+      <View className={`flex-1 p-5 ${isRTL && 'items-end'} justify-end Z-10`}>
         <Text className=' text-3xl font-pbold text-light'>{title}</Text>
       </View>
     </ImageBackground>

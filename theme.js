@@ -1,6 +1,12 @@
 module.exports = {
   colors: {
-    light: { DEFAULT: '#f1f1ff', 100: '#e1e1e1', 200: '##B2B2B2' },
+    light: {
+      DEFAULT: '#f5f5f5',
+      100: '#eaeaea',
+      200: '#c1c1c1',
+      300: '#B2B2B2',
+      400: '#a2a2a2',
+    },
     primary: { DEFAULT: '#00BBD6' },
     secondary: {
       DEFAULT: '#CA2C36',
@@ -15,6 +21,11 @@ module.exports = {
     },
     gray: {
       100: '#CDCDE0',
+    },
+    gradient: {
+      start: '#ff7e5f',
+      middle: '#feb47b',
+      end: '#86e3ce',
     },
   },
   fontFamily: {

@@ -47,14 +47,6 @@ export default function Index() {
             />
           </View>
 
-          {/* <View className='relative mt-5 '>
-          <Text className='text-3xl text-gray-200 font-psemibold text-center'>
-            {t('welcome')}
-            <Text className='text-secondary font-extrabold'>
-              {t('appName')}{' '}
-            </Text>
-          </Text>
-        </View> */}
           <Text className='text-lg font-plight mb-4 text-secondary text-center'>
             {t('slogan')}
           </Text>
